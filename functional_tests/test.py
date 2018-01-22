@@ -15,7 +15,6 @@ class NewVisitorTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
-
     def wait_for_row_in_list_table(self, row_text):
         start_time = time.time()
         while True:
@@ -28,7 +27,6 @@ class NewVisitorTest(LiveServerTestCase):
                 if time.time() - start_time > MAX_WAIT:
                     raise e
                 time.sleep(0.5)
-
 
     def test_can_start_a_list_for_one_user(self):
         # Edith has heard about a cool new online to-do app. She goes
