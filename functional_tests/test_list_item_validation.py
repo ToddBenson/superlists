@@ -1,7 +1,6 @@
 from .base import FunctionalTest
 from selenium.webdriver.common.keys import Keys
-from unittest import skip
-import os
+
 
 class ItemValidationTest(FunctionalTest):
     
@@ -9,7 +8,6 @@ class ItemValidationTest(FunctionalTest):
         # Edith goes to the home page and accidently tries to submit
         # an empty list item. She hits Enter on the empty input box
         self.browser.get(self.live_server_url)
-
         self.browser.find_element_by_id('id_new_item').send_keys(Keys.ENTER)
 
         # The home page refreshes, and there is an error message saying
@@ -31,9 +29,7 @@ class ItemValidationTest(FunctionalTest):
                                                "You can't have an empty list item"))
 
         # And she can correct it by filling some text in
+        self.browser.find_element_by_id('id_new_item').send_keys('Make tea')
         self.browser.find_element_by_id('id_new_item').send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy milk')
         self.wait_for_row_in_list_table('2: Make tea')
-
-
-
